@@ -3,8 +3,6 @@ import { useSchedule } from "../context/ScheduleContext";
 const SessionCard = ({ session }) => {
 
     const { add, sessionIds } = useSchedule();
-    console.log("sesiones: ", sessionIds);
-
     return (
         <div id="session-card" className="border border-black rounded-lg p-4 max-w-80 my-2 flex flex-col gap-2">
             <div className="flex flex-col gap-2">

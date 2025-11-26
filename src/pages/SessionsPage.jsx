@@ -12,8 +12,7 @@ const SessionsPage = () => {
                 {SESSIONS.map(s =>
                     <SessionCard key={s.id} session={s} />
                 )}
-            </div>
-            <Link to={"/my-schedule"}>Go to my schedule</Link>
+            </div>           
         </section>
     )
 };
