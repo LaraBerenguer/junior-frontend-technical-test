@@ -1,150 +1,73 @@
 # 🎯 Frontend Take-Home Test — Session Finder + Schedule
 
-## ⏱ Timebox
-Please spend **no more than 3 hours** on this task.  
-It’s okay to leave comments or TODOs for improvements if you run out of time.
+Made by Lara Berenguer
 
----
+## 🚀 How to Run the Project
 
-## 🎯 Goal
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/LaraBerenguer/junior-frontend-technical-test.git
+   cd junior-frontend-technical-test
+   ```
 
-Build a small React app where a user can:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-1. **Search sessions** (from the provided mock API)
-2. **Add / remove sessions** to a personal **Schedule** (shared state)
-3. **Register** with a simple **form + validation**, and display the confirmation returned by the API
-4. **Create something original** — add a detail that shows your personal touch.
-   This could be:
-   - A visual detail or animation
-   - A reusable component pattern
-   - An interaction or small “wow” feature
-   - Anything you think represents your style and strengths
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-**Styling is completely up to you.** 
+4. **Run tests**
+   ```bash
+   npm run test
+   ```
 
-> **Recommendation:** Don’t try to make everything perfect or complete every idea.
-> Instead, **prioritize what you think is most important** (architecture, DX, UI quality, naming, etc.).
-> We value **decision-making and clarity** over quantity.
+The application will be available at `http://localhost:5173`.
 
-**Reference (visual example only):**  
-https://68dcffe5683caab0190f57ff--guileless-truffle-7eae5c.netlify.app/
+## 🎨 Features Implemented
 
+- ✅ **Search Sessions**: Filter by title, track, or speaker with real-time search.
+- ✅ **Schedule Management**: Add/remove sessions with duplicate prevention.
+- ✅ **Registration Form**: Complete validation and API integration.
+- ✅ **Shared State**: Schedule persists across pages.
+- ✅ **Loading States**: Feedback during API calls.
 
----
+## ⏰ Time management
 
-## 🛠 Tech Rules
-- Use **React** (JavaScript).  
-- Styling is up to you — **Tailwind is optional** (bonus points if used cleanly).  
-- Don’t use heavy UI frameworks (Material UI, Ant Design, etc.).  
-- Keep it functional and clear; design polish is optional.
+### What I’d improve with more time
 
----
+- I would have liked to explore deeper how to make the context work for Search + My Schedule and also for the navbar (for the counter). In the end, I decided to wrap App with SheduleContext for ease and time, as it is a small project.
+- I used a dynamic button, but I would have liked to make it a reusable component.
+- Testing with React Testing Library and DOM, since I used vitest for testing only the logic.
+- Sorting, I didn't have time.
+- Mobile design, it is responsive, but I would have loved to make a mobile navbar and mobile.
+- Accesibility! I love accesible code, but I didn't have time.
 
-## 🚀 Features
+### The 3-Hour Mark (from commit: [61d123d](https://github.com/LaraBerenguer/junior-frontend-technical-test/commit/61d123d858bf40dc674d6e455c2b0b06c00112bc))
+This are the feats I added after the 3h time limit:
+1. **Registration Form**: Fully implemented form validation and logic.
+2. **Testing Implementation aka my personal touch**: Added unit test for `RegistrationForm` component.
+3. **UI Polish**: Enhanced styling, responsiveness, and user experience details.
 
-### 1) Search
-- Input to filter sessions by **title, track, or speaker**.  
-- Display results with **title, track, speaker, start time**.  
-- Each result has an **“Add to Schedule”** button.  
-- Prevent duplicates (disable button or show a notice).
+## 📚 Libraries Used
 
-### 2) My Schedule
-- List sessions the user added.  
-- Allow **Remove**.  
-- (Bonus) Sort by start time.
+- **React Router DOM** (`^7.9.6`): For client-side routing between pages - essential for multi-page SPA navigation.
+- **Tailwind CSS** (`^4.1.13`): For styling - chose for its utility-first approach and rapid development capabilities.
+- **Vitest** (`^4.0.14`): For testing - integrates seamlessly with Vite build tool and provides fast test execution.
 
-### 3) Register
-- Form fields: **name**, **email**, **role** (`Student | Junior | Mid | Senior`).  
-- **Validation**:  
-  - Name: required.  
-  - Email: must look like a valid email.  
-  - Role: required.  
-- On submit → call `registerAttendee(payload)` and display the returned **registrationId**.
+## 📸 Screenshots
 
-### 4) Shared State
-- Use the provided **ScheduleContext** to make the schedule available across Search + My Schedule.  
+### Search Page
+![Search Page](docs/img/search-page.jpg)
 
----
+### My Schedule
+![My Schedule](docs/img/myschedule-page.jpg)
 
-## 📦 Mock API
-Copy the following into `src/api.js`:
+### Registration Form
+![Registration Form](docs/img/register-page.jpg)
 
-```js
-export const SESSIONS = [
-  { id: "s1", title: "React Rendering Deep Dive", track: "Frontend", speaker: "A. Lee", startsAt: "2025-10-01T10:00:00Z", durationMins: 45 },
-  { id: "s2", title: "APIs without Tears", track: "Backend", speaker: "B. Singh", startsAt: "2025-10-01T11:00:00Z", durationMins: 30 },
-  { id: "s3", title: "State Mgmt Tradeoffs", track: "Frontend", speaker: "C. Gomez", startsAt: "2025-10-01T12:00:00Z", durationMins: 30 },
-  { id: "s4", title: "Practical CI/CD", track: "DevOps", speaker: "D. Chen", startsAt: "2025-10-01T13:00:00Z", durationMins: 40 },
-  { id: "s5", title: "Small Models, Big Wins", track: "AI", speaker: "E. Rossi", startsAt: "2025-10-01T14:00:00Z", durationMins: 25 },
-];
-
-const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-
-export async function searchSessions(query) {
-  await delay(300);
-  const q = (query || "").trim().toLowerCase();
-  if (!q) return SESSIONS;
-  return SESSIONS.filter(s =>
-    s.title.toLowerCase().includes(q) ||
-    s.track.toLowerCase().includes(q) ||
-    s.speaker.toLowerCase().includes(q)
-  );
-}
-
-export async function registerAttendee(payload) {
-  await delay(400);
-  if (!payload?.name || !payload?.email || !payload?.role) {
-    return { ok: false, error: "Missing fields" };
-  }
-  return { ok: true, registrationId: "REG-" + Math.floor(100000 + Math.random() * 900000) };
-}
-
-```
-
----
-
-## 📂 Provided Context
-Copy into `src/context/ScheduleContext.jsx`:
-
-```js
-import { createContext, useContext, useState } from "react";
-
-const ScheduleContext = createContext(null);
-
-export function ScheduleProvider({ children }) {
-  const [sessionIds, setSessionIds] = useState([]);
-  const add = (id) => setSessionIds(prev => (prev.includes(id) ? prev : [...prev, id]));
-  const remove = (id) => setSessionIds(prev => prev.filter(x => x !== id));
-  return (
-    <ScheduleContext.Provider value={{ sessionIds, add, remove }}>
-      {children}
-    </ScheduleContext.Provider>
-  );
-}
-
-export const useSchedule = () => useContext(ScheduleContext);
-```
-
-Wrap your app with `<ScheduleProvider>` in main.jsx or App.jsx.
-
----
-
-## ▶️ How to Run
-
-```bash
-npm install
-npm run dev
-
-```
-
----
-
-## 📑 What to Submit
-
-- A link to a public repo (GitHub/GitLab) with your code.
-
-- A short README explaining:
-    - How to run the project
-    - What you’d improve with more time
-    - Any libraries you used (and why)
-
+### Searchbar
+![Searchbar](docs/img/searchbar.jpg)
