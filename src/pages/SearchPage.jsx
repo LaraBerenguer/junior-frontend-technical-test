@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { searchSessions } from "../api";
 import SessionCard from "../components/SessionCard";
 
-const SessionsPage = () => {
+const SearchPage = () => {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [sessions, setSessions] = useState([]);
@@ -42,7 +42,7 @@ const SessionsPage = () => {
 
     return (
         <section id="session-page">
-            <div id="search-bar">
+            <div id="search-bar" className="max-w-80 mb-4">
                 <input
                     type="text"
                     placeholder="Search by title, track or speaker..."
@@ -57,9 +57,11 @@ const SessionsPage = () => {
                     (<div className="text-gray-500">Loading...</div>)
                     :
                     (
-                        sessions.map(s => (
-                            <SessionCard key={s.id} session={s} />
-                        ))
+                        <div className="w-full flex flex-wrap gap-4">
+                            {sessions.map(s => (
+                                <SessionCard key={s.id} session={s} />
+                            ))}
+                        </div>
                     )
                 }
                 {!isLoading && sessions.length === 0 && searchTerm &&
@@ -72,4 +74,4 @@ const SessionsPage = () => {
     )
 };
 
-export default SessionsPage;
+export default SearchPage;
