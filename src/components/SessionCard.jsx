@@ -17,7 +17,7 @@ const SessionCard = ({ session }) => {
                 {session.duration}
             </div>
             <div className="session-button">
-                <button className="bg-purple-900 text-white px-2 py-1 rounded-lg hover:bg-black hover:cursor-pointer" onClick={add(session.id)}>
+                <button className="bg-purple-900 text-white px-2 py-1 rounded-lg hover:bg-black hover:cursor-pointer" onClick={() => add(session.id)}>
                     Add to Schedule
                 </button>
             </div>

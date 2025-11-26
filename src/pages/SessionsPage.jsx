@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { SESSIONS } from "../api";
 import SessionCard from "../components/SessionCard";
 
@@ -12,6 +13,7 @@ const SessionsPage = () => {
                     <SessionCard key={s.id} session={s} />
                 )}
             </div>
+            <Link to={"/my-schedule"}>Go to my schedule</Link>
         </section>
     )
 };
