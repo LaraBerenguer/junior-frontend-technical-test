@@ -1,10 +1,11 @@
-import './App.css'
+//import './App.css'
+import SessionsPage from './pages/SessionsPage'
 
 function App() {
 
   return (
     <>
-
+    <SessionsPage />
     </>
   )
 }
