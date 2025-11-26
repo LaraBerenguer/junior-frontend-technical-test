@@ -27,6 +27,20 @@ Made by Lara Berenguer
 
 The application will be available at `http://localhost:5173`.
 
+## 📸 Screenshots
+
+### Search Page
+![Search Page](public/img/search-page.jpg)
+
+### My Schedule
+![My Schedule](public/img/myshedule-page.jpg)
+
+### Registration Form
+![Registration Form](public/img/register-page.jpg)
+
+### Searchbar
+![Searchbar](public/img/searchbar.jpg)
+
 ## 🎨 Features Implemented
 
 - ✅ **Search Sessions**: Filter by title, track, or speaker with real-time search.
@@ -58,10 +72,3 @@ This are the feats I added after the 3h time limit:
 - **React Router DOM** (`^7.9.6`): For client-side routing between pages - essential for multi-page SPA navigation.
 - **Tailwind CSS** (`^4.1.13`): For styling - chose for its utility-first approach and rapid development capabilities.
 - **Vitest** (`^4.0.14`): For testing - integrates seamlessly with Vite build tool and provides fast test execution.
-
-## 🧪 Testing
-
-To run tests:
-```bash
-npm run test
-```
