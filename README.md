@@ -27,20 +27,6 @@ Made by Lara Berenguer
 
 The application will be available at `http://localhost:5173`.
 
-## 📸 Screenshots
-
-### Search Page
-![Search Page](public/img/search-page.jpg)
-
-### My Schedule
-![My Schedule](public/img/myshedule-page.jpg)
-
-### Registration Form
-![Registration Form](public/img/register-page.jpg)
-
-### Searchbar
-![Searchbar](public/img/searchbar.jpg)
-
 ## 🎨 Features Implemented
 
 - ✅ **Search Sessions**: Filter by title, track, or speaker with real-time search.
@@ -60,15 +46,28 @@ The application will be available at `http://localhost:5173`.
 - Mobile design, it is responsive, but I would have loved to make a mobile navbar and mobile.
 - Accesibility! I love accesible code, but I didn't have time.
 
-### The 3-Hour Mark (Last 4 commits)
+### The 3-Hour Mark (from commit: [61d123d](https://github.com/LaraBerenguer/junior-frontend-technical-test/commit/61d123d858bf40dc674d6e455c2b0b06c00112bc))
 This are the feats I added after the 3h time limit:
 1. **Registration Form**: Fully implemented form validation and logic.
 2. **Testing Implementation aka my personal touch**: Added unit test for `RegistrationForm` component.
 3. **UI Polish**: Enhanced styling, responsiveness, and user experience details.
-
 
 ## 📚 Libraries Used
 
 - **React Router DOM** (`^7.9.6`): For client-side routing between pages - essential for multi-page SPA navigation.
 - **Tailwind CSS** (`^4.1.13`): For styling - chose for its utility-first approach and rapid development capabilities.
 - **Vitest** (`^4.0.14`): For testing - integrates seamlessly with Vite build tool and provides fast test execution.
+
+## 📸 Screenshots
+
+### Search Page
+![Search Page](docs/img/search-page.jpg)
+
+### My Schedule
+![My Schedule](docs/img/myschedule-page.jpg)
+
+### Registration Form
+![Registration Form](docs/img/register-page.jpg)
+
+### Searchbar
+![Searchbar](docs/img/searchbar.jpg)
